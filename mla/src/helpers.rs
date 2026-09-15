@@ -104,6 +104,7 @@ pub fn linear_extract<W1: InnerWriterTrait, R: InnerReaderTrait, S: BuildHasher>
     archive: &mut ArchiveReader<R>,
     export: &mut HashMap<&EntryName, W1, S>,
 ) -> Result<(), Error> {
+    std::thread::sleep(std::time::Duration::from_millis(5)); // TEST ONLY: benchmark witness
     // Seek at the beginning
     archive.src.rewind()?;
 
